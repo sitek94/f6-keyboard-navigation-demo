@@ -1,8 +1,1 @@
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-}
-
-.app {
-  padding: 20px;
-}
+@import "tailwindcss";
