@@ -29,8 +29,7 @@ This project uses **bun** as the package manager. All commands should be run wit
 ```
 src/
 ├── main.tsx          # Entry point with React.StrictMode
-├── App.tsx           # Main application component
-├── App.css           # Component-specific styles
+├── app.tsx           # Main application component
 ├── index.css         # Global styles
 ├── vite-env.d.ts     # Vite TypeScript declarations
 └── assets/           # Static assets
@@ -48,3 +47,7 @@ src/
 - Configured with React 19's latest patterns (StrictMode, createRoot)
 - ESLint configured with modern flat config format and recommended React rules
 - Built-in HMR (Hot Module Replacement) for fast development
+
+### Conventions
+
+- kebab-case for ALL file names
