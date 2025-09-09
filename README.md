@@ -1,69 +1,29 @@
-# React + TypeScript + Vite
+# F6 Navigation Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Simple demo showcasing keyboard-accessible F6 navigation between page sections.
 
-Currently, two official plugins are available:
+## The Problem
+Web applications often have multiple sections (header, sidebar, main content, footer) but no easy way to navigate between them with just the keyboard. The F6 key is a standard accessibility feature that should cycle through these major page sections.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## The Approach
+This demo implements F6 navigation by:
+- Detecting available sections on each page
+- Focusing the first interactive element within each section when F6 is pressed
+- Using Shift+F6 for reverse navigation
+- Automatically skipping missing sections on different page layouts
 
-## Expanding the ESLint configuration
+The navigation logic is handled by the `useF6Navigation` hook located in `src/hooks/use-f6-navigation.ts`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Try It Out
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+bun install
+bun dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then press **F6** to navigate between sections!
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **F6**: Navigate to next section
+- **Shift+F6**: Navigate to previous section
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Visit different pages (`/`, `/features`, `/docs`, `/contact`) to see how navigation adapts to different layouts.
