@@ -41,7 +41,9 @@ test.describe('Home Page: header, left sidebar, main content, footer', () => {
 
 		// Press F6 to go to left sidebar
 		await page.keyboard.press('F6')
-		await expect(page.getByTestId(testIds.leftSidebar).getByRole('link', {name: 'Dashboard'})).toBeFocused()
+		await expect(
+			page.getByTestId(testIds.leftSidebar).getByRole('link', {name: 'Dashboard'}),
+		).toBeFocused()
 
 		// Press Shift+F6 to go back to header
 		await page.keyboard.press('Shift+F6')
@@ -49,15 +51,21 @@ test.describe('Home Page: header, left sidebar, main content, footer', () => {
 
 		// Press Shift+F6 to go to footer (reverse loop)
 		await page.keyboard.press('Shift+F6')
-		await expect(page.getByTestId(testIds.footer).getByRole('link', {name: 'Documentation'})).toBeFocused()
+		await expect(
+			page.getByTestId(testIds.footer).getByRole('link', {name: 'Documentation'}),
+		).toBeFocused()
 
 		// Press Shift+F6 to go to main content
 		await page.keyboard.press('Shift+F6')
-		await expect(page.getByTestId(testIds.main).getByRole('button', {name: 'Primary Action'})).toBeFocused()
+		await expect(
+			page.getByTestId(testIds.main).getByRole('button', {name: 'Primary Action'}),
+		).toBeFocused()
 
 		// Press Shift+F6 to go to sidebar
 		await page.keyboard.press('Shift+F6')
-		await expect(page.getByTestId(testIds.leftSidebar).getByRole('link', {name: 'Dashboard'})).toBeFocused()
+		await expect(
+			page.getByTestId(testIds.leftSidebar).getByRole('link', {name: 'Dashboard'}),
+		).toBeFocused()
 	})
 
 	test('should complete full forward cycle', async ({page}) => {
@@ -66,11 +74,17 @@ test.describe('Home Page: header, left sidebar, main content, footer', () => {
 		await page.keyboard.press('F6')
 		await expect(page.getByTestId(testIds.header).getByRole('link', {name: 'Home'})).toBeFocused()
 		await page.keyboard.press('F6')
-		await expect(page.getByTestId(testIds.leftSidebar).getByRole('link', {name: 'Dashboard'})).toBeFocused()
+		await expect(
+			page.getByTestId(testIds.leftSidebar).getByRole('link', {name: 'Dashboard'}),
+		).toBeFocused()
 		await page.keyboard.press('F6')
-		await expect(page.getByTestId(testIds.main).getByRole('button', {name: 'Primary Action'})).toBeFocused()
+		await expect(
+			page.getByTestId(testIds.main).getByRole('button', {name: 'Primary Action'}),
+		).toBeFocused()
 		await page.keyboard.press('F6')
-		await expect(page.getByTestId(testIds.footer).getByRole('link', {name: 'Documentation'})).toBeFocused()
+		await expect(
+			page.getByTestId(testIds.footer).getByRole('link', {name: 'Documentation'}),
+		).toBeFocused()
 		await page.keyboard.press('F6')
 		await expect(page.getByTestId(testIds.header).getByRole('link', {name: 'Home'})).toBeFocused()
 	})
@@ -80,10 +94,14 @@ test.describe('Home Page: header, left sidebar, main content, footer', () => {
 
 		// Focus on a different element first (e.g., in sidebar)
 		await page.getByTestId(testIds.leftSidebar).getByRole('link', {name: 'Analytics'}).focus()
-		await expect(page.getByTestId(testIds.leftSidebar).getByRole('link', {name: 'Analytics'})).toBeFocused()
+		await expect(
+			page.getByTestId(testIds.leftSidebar).getByRole('link', {name: 'Analytics'}),
+		).toBeFocused()
 
 		// Press F6 - should still go to main content (next section)
 		await page.keyboard.press('F6')
-		await expect(page.getByTestId(testIds.main).getByRole('button', {name: 'Primary Action'})).toBeFocused()
+		await expect(
+			page.getByTestId(testIds.main).getByRole('button', {name: 'Primary Action'}),
+		).toBeFocused()
 	})
 })
